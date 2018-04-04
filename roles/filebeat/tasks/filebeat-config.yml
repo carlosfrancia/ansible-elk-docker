@@ -1,0 +1,28 @@
+---
+
+- name: Debug hosts vars
+  debug: 
+    var: hostvars
+
+#- name: Debug group vars
+#  debug: 
+#    var: groupvars
+
+- name: Copy filebeat reporsitory file
+  copy:
+    src: "filebeat.repo"
+    dest: "/etc/yum.repos.d/filebeat.repo"
+    mode: 0755
+
+- name: Create filebeat home directory
+  file:
+    path: "{{ filebeat_home }}"
+    mode: 0755
+    state: directory
+
+- name: Copy filebeat configuration file
+  template:
+    src: "filebeat.yml.j2"
+    dest: "{{ filebeat_home }}/filebeat.yml"
+    mode: 0755
+

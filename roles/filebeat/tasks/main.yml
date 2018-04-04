@@ -1,0 +1,5 @@
+---
+
+- include_tasks: filebeat-config.yml
+
+- include_tasks: filebeat.yml

@@ -1,0 +1,29 @@
+---
+
+- name: Deploy ES, Logstash and Kibana in 3 Docker containers
+  docker_service:
+    project_name: "elk_docker"
+    definition:
+      version: "2"
+      services:
+        elasticsearch:
+          image: docker.elastic.co/elasticsearch/elasticsearch:6.1.3
+          ports:
+            - "9200:9200"
+            - "9300:9300"
+          environment:
+            discovery.type: single-node
+        kibana:
+          image: "docker.elastic.co/kibana/kibana:6.1.3"
+          ports:
+            - "5601:5601"
+          environment:
+              SERVER_NAME: kibana
+              ELASTICSEARCH_URL: http://elasticsearch:9200
+        logstash:
+          image: "docker.elastic.co/logstash/logstash:6.2.2"
+          ports:
+            - "5044:5044"
+          volumes:
+            - "/etc/logstash/config/:/usr/share/logstash/config/"
+

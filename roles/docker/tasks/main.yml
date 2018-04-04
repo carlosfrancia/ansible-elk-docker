@@ -1,0 +1,5 @@
+---
+
+- include_tasks: prepare.yml
+
+- include_tasks: docker.yml

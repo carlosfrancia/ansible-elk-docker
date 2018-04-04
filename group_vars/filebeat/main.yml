@@ -1,0 +1,8 @@
+---
+
+packages:
+  - filebeat
+
+filebeat_home: "/home/carlos/filebeat"
+
+logstash_url: 192.168.181.132:5044

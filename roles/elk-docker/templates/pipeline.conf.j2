@@ -1,0 +1,17 @@
+input {
+    beats {
+        port => "5044"
+    }
+}
+# The filter part of this file is commented out to indicate that it is
+# optional.
+# filter {
+#
+# }
+output {
+    stdout { codec => rubydebug }
+    elasticsearch { 
+      hosts => ["elasticsearch:9200"] 
+      index => "my_index_1"
+    }
+}

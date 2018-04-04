@@ -1,0 +1,14 @@
+---
+
+- name: Install filebeat packages
+  yum:
+    name: "{{ item  }}"
+    state: present
+  with_items: "{{ packages }}"
+
+- name: Copy filebeat configuration file
+  template: 
+    src: "filebeat.yml.j2"
+    dest: "/etc/filebeat/filebeat.yml"
+    mode: 0755
+

@@ -1,0 +1,31 @@
+---
+
+- name: Add repository
+  yum_repository:
+    name: docker-ce
+    description: Docker stable repository
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install Docker CE
+  yum:
+    name: docker-ce
+    state: present
+
+- name: create docker group
+  group:
+    gid: 1991
+    name: docker
+    state: present
+
+#- name: add docker group
+#  user:
+#    name: "{{ item }}"
+#    groups: docker
+#    append: true
+#  with_items: "{{ users }}"
+
+- name: enable docker services
+  service:
+    name: docker
+    enabled: true
+    state: started
