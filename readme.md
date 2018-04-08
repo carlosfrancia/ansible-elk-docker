@@ -29,6 +29,10 @@ ansible-playbook -i ec2.py -t deploy deploy_elk_stack.yml
 ansible-playbook -i hosts -t elk deploy_elk_stack.yml
 
  - filebeat, used to only deploy filebeat (static inventory is required)
+ansible-playbook -i hosts -t filebeat deploy_elk_stack.yml
+
+ - If you ec2 instance is not required a combination of tags can be used:
+ansible-playbook -i hosts deploy_elk_stack.yml --tags "elk,filebeat"
 
 ## Using this repository
 

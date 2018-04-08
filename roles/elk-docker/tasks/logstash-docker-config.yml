@@ -4,29 +4,29 @@
   file:
     path: "/etc/logstash/config"
     state: directory
-    mode: 0755
+    mode: 0777
 
 - name: Copy config file
   template:
     src: "logstash.yml.j2"
     dest: "/etc/logstash/config/logstash.yml"
-    mode: 0755
+    mode: 0766
 
 - name: Copy pipelines configuration
   template:
     src: "pipelines.yml.j2"
     dest: "/etc/logstash/config/pipelines.yml"
-    mode: 0755
+    mode: 0766
 
 - name: Create Pipelines directory
   file:
     path: "/etc/logstash/config/pipeline"
     state: directory
-    mode: 0755
+    mode: 0777
 
 - name: Copy pipeline_1 configuration
   template:
     src: "pipeline.conf.j2"
     dest: "/etc/logstash/config/pipeline/pipeline.conf"
-    mode: 0755
+    mode: 0766
 

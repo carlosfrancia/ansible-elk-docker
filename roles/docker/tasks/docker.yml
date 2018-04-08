@@ -17,12 +17,12 @@
     name: docker
     state: present
 
-#- name: add docker group
-#  user:
-#    name: "{{ item }}"
-#    groups: docker
-#    append: true
-#  with_items: "{{ users }}"
+- name: add docker group
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: true
+  with_items: "{{ users }}"
 
 - name: enable docker services
   service:

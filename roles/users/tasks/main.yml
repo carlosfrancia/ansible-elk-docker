@@ -1,0 +1,10 @@
+---
+
+- include_tasks: users.yml
+  tags:
+   - users
+
+- include_tasks: sudoers.yml
+  tags:
+   - users
+

@@ -1,12 +1,27 @@
 ---
 
-- name: Debug hosts vars
-  debug: 
-    var: hostvars
-
-#- name: Debug group vars
+#- name: Debug hosts vars
 #  debug: 
-#    var: groupvars
+#    var: hostvars
+
+- name: Create Filebeat group
+  group:
+    name: filebeat
+    state: present
+
+- name: Add users to Filebeat group
+  user:
+    name: "{{ item }}"
+    groups: filebeat
+    append: true
+  with_items: "{{ users }}"
+
+- name: Create Filebeat system user
+  user:
+    name: "filebeat"
+    system: yes
+    createhome: no
+    groups: filebeat
 
 - name: Copy filebeat reporsitory file
   copy:
@@ -17,12 +32,16 @@
 - name: Create filebeat home directory
   file:
     path: "{{ filebeat_home }}"
-    mode: 0755
+    mode: 0777
+    owner: "filebeat"
+    group: "filebeat"
     state: directory
 
 - name: Copy filebeat configuration file
   template:
     src: "filebeat.yml.j2"
     dest: "{{ filebeat_home }}/filebeat.yml"
-    mode: 0755
+    owner: "filebeat"
+    group: "filebeat"
+    mode: 0766
 

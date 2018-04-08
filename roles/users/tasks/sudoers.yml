@@ -1,0 +1,28 @@
+---
+- name: create sudoers group
+  group:
+    name: sysadmins
+    state: present
+
+- name: add users to group
+  user:
+    name: "{{ item }}"
+    groups: sysadmins
+    append: true
+  with_items: "{{ users }}"
+
+- name: create /etc/sudoers.d
+  file:
+    path: /etc/sudoers.d
+    mode: 0750
+    owner: root
+    group: root
+    state: directory
+
+- name: allow sudoers to use sudo
+  copy:
+    dest: /etc/sudoers.d/sysadmins
+    content: "%sysadmins ALL=(ALL)       NOPASSWD: ALL"
+    mode: 0440
+    owner: root
+    group: root

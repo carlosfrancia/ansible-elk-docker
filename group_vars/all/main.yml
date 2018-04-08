@@ -1,0 +1,6 @@
+---
+
+home_base: /home
+
+users:
+  - elk

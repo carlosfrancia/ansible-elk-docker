@@ -1,4 +1,5 @@
 ---
+
 ## Playbook to deploy a Dockerized ELK stack
 
 - name: Deploy ec2 instance
@@ -12,15 +13,20 @@
 - name: Deploy Elk Server
   hosts: elk-server
   become: yes
+  become_user: root
+  remote_user: ec2-user
   roles:
+    - users
     - docker
     - elk-docker
   tags: 
     - elk
 
 - name: Deploy Filebeat
-  hosts: filebeat
+  hosts: elk-server
   become: yes
+  become_user: root
+  remote_user: ec2-user
   roles:
     - filebeat
   tags:

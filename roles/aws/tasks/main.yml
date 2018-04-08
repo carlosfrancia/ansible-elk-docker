@@ -3,11 +3,11 @@
 - name: Deploy ec2 instance
   ec2:
     region: eu-west-2
-    key_name: ansible-master@aws
+    key_name: elk
     instance_type: t2.micro
     image: ami-403e2524
     wait: true
-    exact_count: 1
+    exact_count: "{{ ec2_count }}"
     vpc_subnet_id: subnet-13011668
     assign_public_ip: true
     instance_tags:
