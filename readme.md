@@ -1,6 +1,6 @@
 ## Dockerized ELK stack
 
-Used to provision an ephemeral lab for ELK training on ec2 with amazon linux. This will build a number of single ELK systems in Docker container. The following components will be installed on each ec2 instance:
+Used to provision a dockerized version of ELK (ELasticsearch-Logstash-Kibana) on ec2 with amazon linux. This will build a number of single ELK systems on Docker containers. The following components will be installed on each ec2 instance:
 
 - Docker
 - Elasticsearch (Docker container)
