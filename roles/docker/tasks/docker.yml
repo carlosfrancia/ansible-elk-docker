@@ -1,16 +1,5 @@
 ---
 
-- name: Add repository
-  yum_repository:
-    name: docker-ce
-    description: Docker stable repository
-    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
-
-- name: Install Docker CE
-  yum:
-    name: docker-ce
-    state: present
-
 - name: create docker group
   group:
     gid: 1991

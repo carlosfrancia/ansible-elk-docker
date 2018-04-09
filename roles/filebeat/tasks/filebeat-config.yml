@@ -41,7 +41,5 @@
   template:
     src: "filebeat.yml.j2"
     dest: "{{ filebeat_home }}/filebeat.yml"
-    owner: "filebeat"
-    group: "filebeat"
-    mode: 0766
+    mode: 0744
 

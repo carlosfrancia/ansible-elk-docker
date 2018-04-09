@@ -1,6 +1,10 @@
 ---
 
 packages_preparation:
-  - yum-utils
-  - device-mapper-persistent-data
-  - lvm2
+  - docker
+  - device-mapper-libs
+  - device-mapper-event-libs
+
+pip_dependencies:
+  - docker-pycreds
+  - dockerpty

@@ -10,9 +10,9 @@ Used to provision a dockerized version of ELK (ELasticsearch-Logstash-Kibana) on
 
 ## Changing the number of instances
 
-To change the number of instances required, either set the count variable in roles/deploy/defaults/main.yml, or pass in count=$requirednumber of instances via the command line:
+To change the number of instances required, either set the count variable in roles/aws/defaults/main.yml, or pass in ec2_count=$requirednumber of instances via the command line:
 
-ansible-playbook -i ec2.py deploy-elk-stack.yml -e count=15
+ansible-playbook -i ec2.py deploy-elk-stack.yml -e ec2_count=15
 
 ## Pre-requisites
 
@@ -51,7 +51,7 @@ git clone https://github.com/carlosfrancia/ELK-Ansible.git
 cd ELK-Ansible
 
 - Set variables and vault for ansible usage
-export ANSIBLE_CONFIG=~/zabbix-training-lab/ansible.cfg  
+export ANSIBLE_CONFIG=~/ELK-Ansible/ansible.cfg  
 echo [VAULT] > ~/.vault
 
 - Run ansible:
@@ -61,7 +61,7 @@ ansible-playbook -i ec2.py deploy_elk_stack.yml
 
 - Elasticsearch
 
-Check status on the health of the cluster:
+Check status on the health of the cluster (from the ELK server as 9200 port is not open in AWS):
 
 curl -XGET '[ELK-SERVER]:9200/_cluster/health?pretty'
 
@@ -73,16 +73,17 @@ URL: http://[ELK-SERVER]:5601
 
 A Logstash pipeline is configured under /ELK-Ansible/roles/elk-docker/templates. 
 
-These files can be modified to meet different requirements
+Pipeline can be modified as per requirements.
 
 - Filebeat
 
 Filebeat is configured under /home/carlos/github/ELK-Ansible/roles/filebeat/templates/filebeat.yml.j2
 
-A prospector to send server logs has been configured:
+A prospector to send server logs has already been configured:
 
 	- type: log
 	  enabled: true
 	  paths:
 		- /var/log/*.log
 
+This file can be modified as per requirements.

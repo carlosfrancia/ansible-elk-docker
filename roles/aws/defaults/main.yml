@@ -2,3 +2,8 @@
 
 ec2_count: 1
 
+vpc_id: vpc-ead33082
+ec2_region: eu-west-2
+ec2_instance_type: t2.medium
+ec2_image: ami-403e2524
+subnet_id: subnet-13011668
