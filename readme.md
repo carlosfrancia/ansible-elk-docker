@@ -95,7 +95,7 @@ Parameters
 
 ### Deploy ELK Server
 
-This role runs three roles:
+Includes three roles:
 
 #### Users role
 
@@ -124,7 +124,7 @@ These two docker versions are required to avoid an Ansible bug at the time this 
 
 #### Elk-docker role
 
-Installs three container for Elasticsearch, Logstash and Kibana:
+Installs three containers: Elasticsearch, Logstash and Kibana:
 
 * Elasticsearch: docker.elastic.co/elasticsearch/elasticsearch:6.1.3
 * Logstash: docker.elastic.co/logstash/logstash:6.2.2
