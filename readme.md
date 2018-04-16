@@ -29,7 +29,7 @@ In order to run this playbook the following software and dependencies are requir
 
 Ensure you have an AWS access key and secret already configured on the shell environment variables, or with the relevant iam role for ec2 instance creation allocated to the instance from which Ansible runs.
 
-A Amazon Virtual Private Cloud (VPC) and a subnet ID.
+An Amazon Virtual Private Cloud (VPC) and a subnet ID.
 
 ## Getting started
 
