@@ -1,6 +1,7 @@
 ---
 
 packages_preparation:
+  - python-pip
   - docker
   - device-mapper-libs
   - device-mapper-event-libs
